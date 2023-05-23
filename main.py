@@ -11,7 +11,7 @@ app = FastAPI(
     ),
     version="1.0.0",
     title="API SINGULAR ROUTE",
-    description="This API integrates with SINGULAR ROUTE system"
+    description="This API integrates with SMARTCARING system"
 )
 
 
