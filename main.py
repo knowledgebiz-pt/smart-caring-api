@@ -10,8 +10,8 @@ app = FastAPI(
         http="https://knowledgebiz.pt"
     ),
     version="1.0.0",
-    title="API SMARTING CARE",
-    description="This API integrates with SMARTING CARE system"
+    title="API SINGULAR ROUTE",
+    description="This API integrates with SINGULAR ROUTE system"
 )
 
 
