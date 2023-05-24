@@ -5,7 +5,7 @@ import random
 from datetime import datetime
 import core.models.user_model
 
-CONNECTION = 'mongodb+srv://basic_user:n1RmcatLryuYJwYY@knowledgebiz-cluster.m8nzdrm.mongodb.net/singular-route?retryWrites=true&w=majority'
+CONNECTION = 'mongodb+srv://basic_user:n1RmcatLryuYJwYY@knowledgebiz-cluster.m8nzdrm.mongodb.net/smart-caring?retryWrites=true&w=majority'
 
 
 def add_user(value):
@@ -37,7 +37,7 @@ def add_user(value):
         exponent_push_token=value.exponent_push_token,
         address=address
     ).save()
-    return str(response[0].auto_id_0)
+    return str(response.auto_id_0)
 
 
 def return_user_by_email_and_password(email, password):
