@@ -19,6 +19,7 @@ class UserPost(BaseModel):
     _id: str
     name: str
     email: str
+    user_gender: str
     user_type: Optional[str] = Field(default="Patient", alias="UserType")
     receives_notification: Optional[bool] = Field(default=True, alias="receivesNotifications")
     notification_email: Optional[str] = Field(default=null, alias="notificationEmail")

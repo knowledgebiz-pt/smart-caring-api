@@ -16,6 +16,7 @@ class User(Document):
     _id = ObjectIdField()
     name = StringField()
     email = StringField()
+    user_gender = StringField()
     user_type = StringField()
     receives_notification = BooleanField()
     notification_email = StringField()
