@@ -26,6 +26,7 @@ def add_user(value):
     response = model.user_model.User(
         name=value.name,
         email=value.email,
+        user_type=value.user_type,
         receives_notification=value.receives_notification,
         notification_email=value.notification_email,
         password=value.password,

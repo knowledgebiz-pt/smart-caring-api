@@ -16,6 +16,7 @@ class User(Document):
     _id = ObjectIdField()
     name = StringField()
     email = StringField()
+    user_type = StringField()
     receives_notification = BooleanField()
     notification_email = StringField()
     password = StringField()
@@ -25,7 +26,6 @@ class User(Document):
     gmail_access_token = StringField()
     exponent_push_token = StringField()
     address = EmbeddedDocumentField(ModelUserAddress)
-    #partner = BooleanField()
 
 
 class ForgotPassword(Document):

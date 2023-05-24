@@ -19,6 +19,7 @@ class UserPost(BaseModel):
     _id: str
     name: str
     email: str
+    user_type: Optional[str] = Field(default="Patient", alias="UserType")
     receives_notification: Optional[bool] = Field(default=True, alias="receivesNotifications")
     notification_email: Optional[str] = Field(default=null, alias="notificationEmail")
     password: Optional[str] = Field(default=null, alias="password")
@@ -28,7 +29,6 @@ class UserPost(BaseModel):
     gmail_access_token: Optional[str] = Field(default=null, alias="gmailAccessToken")
     exponent_push_token: Optional[str] = Field(default=null, alias="exponentPushToken")
     address: UserAddress
-    #partner: Optional[bool] = Field(default=False, alias="isPartner")
 
 
 class UserCreateResponse(BaseModel):
