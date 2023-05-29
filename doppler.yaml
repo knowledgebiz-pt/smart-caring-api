@@ -1,0 +1,3 @@
+setup:
+  project: smart-caring
+  config: dev
