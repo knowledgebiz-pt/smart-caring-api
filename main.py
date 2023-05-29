@@ -1,3 +1,5 @@
+import os
+
 import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -10,8 +12,8 @@ app = FastAPI(
         http="https://knowledgebiz.pt"
     ),
     version="1.0.0",
-    title="API SMARTING CARE",
-    description="This API integrates with SMARTING CARE system"
+    title="API SINGULAR ROUTE",
+    description="This API integrates with SMART-CARING system"
 )
 
 
@@ -22,6 +24,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+print(os.getenv("MONGO_CONNECTION"))
 
 
 app.include_router(routers.user_router.router, prefix="/user", tags=["user"])
