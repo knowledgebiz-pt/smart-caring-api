@@ -5,7 +5,7 @@ import random
 from datetime import datetime
 import core.models.user_model
 
-CONNECTION = ''
+CONNECTION = 'mongodb+srv://basic_user:n1RmcatLryuYJwYY@knowledgebiz-cluster.m8nzdrm.mongodb.net/smart-caring?retryWrites=true&w=majority'
 
 
 def add_user(value):
@@ -28,6 +28,7 @@ def add_user(value):
         email=value.email,
         user_gender=value.user_gender,
         user_type=value.user_type,
+        visibility=value.visibility,
         receives_notification=value.receives_notification,
         notification_email=value.notification_email,
         password=value.password,

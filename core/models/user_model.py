@@ -18,6 +18,7 @@ class User(Document):
     email = StringField()
     user_gender = StringField()
     user_type = StringField()
+    visibility = BooleanField()
     receives_notification = BooleanField()
     notification_email = StringField()
     password = StringField()

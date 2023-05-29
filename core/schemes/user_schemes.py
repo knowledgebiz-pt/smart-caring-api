@@ -21,7 +21,7 @@ class UserPost(BaseModel):
     email: str
     user_gender: str
     user_type: Optional[str] = Field(default="Patient", alias="UserType")
-    visibility: Optional[bool] = Field(default=True, alias="VisibilityUser")
+    visibility: Optional[bool] = Field(default=True, alias="visibilityUser")
     receives_notification: Optional[bool] = Field(default=True, alias="receivesNotifications")
     notification_email: Optional[str] = Field(default=null, alias="notificationEmail")
     password: Optional[str] = Field(default=null, alias="password")
