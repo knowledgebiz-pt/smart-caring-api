@@ -1,6 +1,6 @@
 fastapi == 0.86.0
 uvicorn == 0.19.0
-uuid
+uuid == 1.30
 starlette~=0.20.4
 py-linq~=0.1.0
 six>=1.4.0
