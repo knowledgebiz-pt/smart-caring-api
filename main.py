@@ -25,7 +25,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-print(os.getenv("MONGO_CONNECTION"))
+#print(os.getenv("MONGO_CONNECTION"))
 
 
 app.include_router(routers.user_router.router, prefix="/user", tags=["user"])
