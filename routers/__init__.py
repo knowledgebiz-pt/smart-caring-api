@@ -1,2 +1,1 @@
-from routers import user_router
-
+from routers import user_router, news_router, likes_router

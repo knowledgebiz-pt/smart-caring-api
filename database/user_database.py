@@ -4,8 +4,8 @@ import json
 
 import core.models.user_model
 
-CONNECTION = 'mongodb+srv://basic_user:n1RmcatLryuYJwYY@knowledgebiz-cluster.m8nzdrm.mongodb.net/singular-route?retryWrites=true&w=majority'
-
+#CONNECTION = 'mongodb+srv://basic_user:n1RmcatLryuYJwYY@knowledgebiz-cluster.m8nzdrm.mongodb.net/smart-caring?retryWrites=true&w=majority'
+CONNECTION = 'mongodb://localhost:27017/smartcaring?retryWrites=true&w=majority'
 
 def add_user(value):
     """

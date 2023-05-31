@@ -26,8 +26,8 @@ async def create_user(user: core.schemes.user_schemes.UserPost):
             )
 async def service(response: Response, email: str, password: str):
     response_database = database.user_database.return_user_by_email_and_password(email, password)
-    if response_database is None:
-        response.status_code = status.HTTP_400_BAD_REQUEST
+    if response_database is None or not response_database:
+        response.status_code = status.HTTP_404_NOT_FOUND
         return {"msg": "error", "data": "This User does not exist"}
     else:
         return {"msg": "success",

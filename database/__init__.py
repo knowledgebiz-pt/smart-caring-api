@@ -1,1 +1,1 @@
-from database import user_database
+from database import user_database, news_database, likes_database

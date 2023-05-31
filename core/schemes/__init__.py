@@ -1,2 +1,1 @@
-from core.schemes import user_schemes
-
+from core.schemes import user_schemes, news_schemes, likes_scheme

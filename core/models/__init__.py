@@ -1,1 +1,1 @@
-from core.models import user_model
+from core.models import user_model, news_model, likes_model
