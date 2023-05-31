@@ -13,7 +13,7 @@ app = FastAPI(
     ),
     version="1.0.0",
     title="API SMART CARING",
-    description="This API integrates with SMART-CARING system"
+    description="This API integrates with SMART CARING system"
 )
 
 
@@ -27,6 +27,8 @@ app.add_middleware(
 
 
 app.include_router(routers.user_router.router, prefix="/user", tags=["user"])
+app.include_router(routers.news_router.router, prefix="/news", tags=["news"])
+app.include_router(routers.likes_router.router, prefix="/likes", tags=["likes"])
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=2828)
