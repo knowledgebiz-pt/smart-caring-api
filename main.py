@@ -11,7 +11,7 @@ app = FastAPI(
         email="geral@knowldgzebiz.pt",
         http="https://knowledgebiz.pt"
     ),
-    version="1.0.0",
+    version="1.0.2",
     title="API SMART CARING",
     description="This API integrates with SMART CARING system"
 )
