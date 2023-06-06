@@ -75,7 +75,7 @@ async def service(response: Response, email: str, code: str):
         print("HERE")
 
 
-@router.put("update-password/{email}/{password}",
+@router.put("/update-password/{email}/{password}",
             summary="Updates user password",
             description="Updates user password",
             response_model=core.schemes.user_schemes.UserUpdatePasswordResponse,
