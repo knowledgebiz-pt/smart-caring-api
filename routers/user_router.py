@@ -1,5 +1,5 @@
 import datetime
-
+from internal import send_email
 from fastapi import APIRouter, HTTPException, Response, status
 import core.schemes
 import database.user_database
@@ -47,7 +47,8 @@ async def service(response: Response, email: str):
     response_database = database.user_database.return_user_by_email(email)
     if response_database is None or not response_database:
         response.status_code = status.HTTP_404_NOT_FOUND
-        #call function from internal to send email
+        recover_message = database.user_database.add_recover_password(response_database)
+        send_email.send_recovery_code(recover_message)
         return {"msg": "error", "data": "This User does not exist"}
     else:
         database.user_database.add_recover_password(response_database)
