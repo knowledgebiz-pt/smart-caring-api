@@ -15,7 +15,6 @@ app = FastAPI(
     description="This API integrates with SMART CARING system"
 )
 
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
