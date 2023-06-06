@@ -47,11 +47,10 @@ async def service(response: Response, email: str):
     response_database = database.user_database.return_user_by_email(email)
     if response_database is None or not response_database:
         response.status_code = status.HTTP_404_NOT_FOUND
-        recover_message = database.user_database.add_recover_password(response_database)
-        send_email.send_recovery_code(recover_message)
         return {"msg": "error", "data": "This User does not exist"}
     else:
-        database.user_database.add_recover_password(response_database)
+        recover_message = database.user_database.add_recover_password(response_database)
+        send_email.send_recovery_code(recover_message)
         return {"msg": "success",
                 "data": response_database}
 

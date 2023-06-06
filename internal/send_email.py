@@ -5,7 +5,7 @@ import ssl
 def send_recovery_code(recovery_message):
     port = 2828
     smtp_server = ""
-    sender_email = "no-reply@smartcaring.com"
+    sender_email = "place_holderemail@email.com"
     password = input("Password")
 
     receiver_email = recovery_message.email
