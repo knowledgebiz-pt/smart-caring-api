@@ -28,3 +28,6 @@ app.include_router(routers.likes_router.router, prefix="/likes", tags=["likes"])
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=2828)
+
+
+#teste
