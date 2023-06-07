@@ -10,15 +10,15 @@ class NewsPost(BaseModel):
     News Post
     """
     _id: str
+    user_id: str
     title: str = Field(
         ..., title="The description of the item", min_length = 5, max_length=120
     )
-    content: str = Field(
-        ..., title="The description of the item", min_length = 50, max_length=3000
-    )
-    user_id: str
-    picture: Optional[str] = Field(default=null, alias="picture")
-    video: Optional[str] = Field(default=null, alias="video")
+    content: dict
+    content_type: str
+    date: datetime
+
+
 
 
 class NewsCreateResponse(BaseModel):

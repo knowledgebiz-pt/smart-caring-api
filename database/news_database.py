@@ -1,4 +1,5 @@
 from mongoengine import connect
+import pymongo
 import core.models as model
 import json
 
@@ -6,6 +7,7 @@ import core.models.news_model
 
 #CONNECTION = 'mongodb+srv://basic_user:n1RmcatLryuYJwYY@knowledgebiz-cluster.m8nzdrm.mongodb.net/smart-caring?retryWrites=true&w=majority'
 CONNECTION = 'mongodb://localhost:27017/smartcaring?retryWrites=true&w=majority'
+
 
 def add_news(value):
     """
@@ -16,11 +18,11 @@ def add_news(value):
     connect(host=CONNECTION)
 
     response = model.news_model.News(
-        title = value.title,
-        content = value.content,
         user_id = value.user_id,
-        picture = value.picture,
-        video = value.video,
+        title = value.title,
+        content_type = value.content_type,
+        content = value.content,
+        date = value.date,
     ).save()
     return str(response.auto_id_0)
 
