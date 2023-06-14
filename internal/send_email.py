@@ -8,7 +8,7 @@ def send_recovery_code(recovery_message):
     sender_email = "place_holderemail@email.com" #placeholder email until smtp server is configured
     password = "Password" #placeholder until smtp server is configured
 
-    receiver_email = recovery_message.email
+    receiver_email = recovery_message.user_email
     recovery_code = recovery_message.code
 
     message = """
