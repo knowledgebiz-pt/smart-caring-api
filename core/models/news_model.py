@@ -1,12 +1,12 @@
-from mongoengine import Document, ObjectIdField, StringField 
+from mongoengine import Document, ObjectIdField, StringField, DictField, DateTimeField
 
 class News(Document):
     """
     News model database
     """
     _id = ObjectIdField()
-    title = StringField()
-    content = StringField()
     user_id = StringField()
-    picture = StringField()
-    video = StringField()
+    title = StringField()
+    content_type = StringField()
+    content = DictField()
+    date = DateTimeField()
