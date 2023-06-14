@@ -49,10 +49,9 @@ async def service(response: Response, email: str):
         response.status_code = status.HTTP_404_NOT_FOUND
         return {"msg": "error", "data": "This User does not exist"}
     else:
-        recover_message = database.user_database.add_recover_password(response_database)
-        send_email.send_recovery_code(recover_message)
+        database.user_database.add_recover_password(response_database)
         return {"msg": "success",
-                "data": response_database}
+                "data": "Code sent with success"}
 
 
 @router.get("/verify-recovery-code/{email}",
