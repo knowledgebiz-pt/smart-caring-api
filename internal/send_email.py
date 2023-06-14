@@ -3,10 +3,10 @@ import ssl
 
 
 def send_recovery_code(recovery_message):
-    port = 2828
-    smtp_server = ""
-    sender_email = "place_holderemail@email.com" #placeholder email until smtp server is configured
-    password = "Password" #placeholder until smtp server is configured
+    port = 587
+    smtp_server = "STARTTLS"
+    sender_email = "smtp-mail.outlook.com"
+    password = "Vuw20954"
 
     receiver_email = recovery_message.user_email
     recovery_code = recovery_message.code
