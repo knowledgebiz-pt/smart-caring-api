@@ -19,8 +19,6 @@ class NewsPost(BaseModel):
     date: datetime
 
 
-
-
 class NewsCreateResponse(BaseModel):
     """
     News create response
@@ -35,6 +33,7 @@ class NewsGetResponse(BaseModel):
     """
     msg: str
     data: object = {}
+
 
 class NewsDeleteResponse(BaseModel):
     """

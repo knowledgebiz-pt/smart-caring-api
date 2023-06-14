@@ -2,8 +2,8 @@ from mongoengine import connect
 import pymongo
 import core.models as model
 import json
-
 import core.models.news_model
+
 
 #CONNECTION = 'mongodb+srv://basic_user:n1RmcatLryuYJwYY@knowledgebiz-cluster.m8nzdrm.mongodb.net/smart-caring?retryWrites=true&w=majority'
 CONNECTION = 'mongodb://localhost:27017/smartcaring?retryWrites=true&w=majority'
