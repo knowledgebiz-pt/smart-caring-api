@@ -58,7 +58,7 @@ def return_user_by_email(email):
 
 
 def add_recover_password(value):
-    code_generate = random.randint(000000, 999999)
+    code_generate = random.randint(0000, 9999)
     response = model.user_model.ForgotPassword(
         user_email=value["email"],
         code=code_generate,
