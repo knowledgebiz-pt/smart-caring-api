@@ -1,4 +1,15 @@
-from mongoengine import Document, ObjectIdField, StringField, DictField, DateTimeField
+from mongoengine import Document, ObjectIdField, StringField, DictField, DateTimeField, BooleanField, EmbeddedDocument, EmbeddedDocumentField
+
+
+class ModelContent(Document):
+    type = StringField()
+    path = StringField()
+
+
+class ModelLink(Document):
+    path = StringField()
+    show_preview = BooleanField()
+
 
 class News(Document):
     """
@@ -7,6 +18,7 @@ class News(Document):
     _id = ObjectIdField()
     user_id = StringField()
     title = StringField()
-    content_type = StringField()
-    content = DictField()
+    content = EmbeddedDocumentField(ModelContent)
+    link = EmbeddedDocumentField(ModelLink)
     date = DateTimeField()
+

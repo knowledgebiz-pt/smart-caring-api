@@ -5,17 +5,27 @@ from pyasn1.compat.octets import null
 from fastapi import Depends
 
 
+class Content(BaseModel):
+    type: str
+    path: str
+
+
+class Link(BaseModel):
+    path: str
+    show_preview: bool
+
+
 class NewsPost(BaseModel):
     """
     News Post
     """
     _id: str
     user_id: str
-    title: str = Field(
+    text: str = Field(
         ..., title="The description of the item", min_length = 5, max_length=120
     )
-    content: dict
-    content_type: str
+    content: Optional[Content] = Field(default=null, alias="content")
+    link: Optional[Link] = Field(default=null, alias="content")
     date: datetime
 
 
@@ -41,3 +51,8 @@ class NewsDeleteResponse(BaseModel):
         """
     msg: str
     data: object = {}
+
+
+
+#content {type, path}
+#link {path, show_preview}

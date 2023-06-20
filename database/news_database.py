@@ -17,11 +17,19 @@ def add_news(value):
     """
     connect(host=CONNECTION)
 
+    content= core.models.news_model.ModelContent()
+    content.type = value.content.type
+    content.path = value.content.path
+
+    link= core.models.news_model.ModelLink()
+    link.path = value.content.path
+    link.show_preview = value.content.show_preview
+
     response = model.news_model.News(
         user_id = value.user_id,
-        title = value.title,
-        content_type = value.content_type,
-        content = value.content,
+        text = value.text,
+        content = content,
+        link = link,
         date = value.date,
     ).save()
     return str(response.auto_id_0)
