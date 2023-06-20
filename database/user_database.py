@@ -43,9 +43,11 @@ def add_user(value):
     )#.save()
     if (internal.validate_password.password_check(value.password)):
         response.save()
+        response_status = "Success"
         return str(response.auto_id_0)
     else:
-        return str("Invalid Password. Password must contain a minimun of 8 digits, a uppercase and lowercase letter, a digit and a special character")
+        response_status = "Invalid Password. Password must contain a minimun of 8 digits, a uppercase and lowercase letter, a digit and a special character"
+        return str(response_status)
 
 
 
