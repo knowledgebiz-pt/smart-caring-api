@@ -1,5 +1,6 @@
 from mongoengine import connect
 import core.models as model
+import string
 import json
 import random
 from datetime import datetime
@@ -26,7 +27,7 @@ def add_user(value):
 
     response = model.user_model.User(
         name=value.name,
-        email=value.email,
+        email=value.email.lower(),
         user_gender=value.user_gender,
         user_type=value.user_type,
         visibility=value.visibility,
@@ -39,8 +40,15 @@ def add_user(value):
         gmail_access_token=value.gmail_access_token,
         exponent_push_token=value.exponent_push_token,
         address=address
-    ).save()
-    return str(response.auto_id_0)
+    )#.save()
+    if (internal.validate_password.password_check(value.password)):
+        response.save()
+        response_status = "Success"
+        return str(response.auto_id_0)
+    else:
+        response_status = "Invalid Password. Password must contain a minimun of 8 digits, a uppercase and lowercase letter, a digit and a special character"
+        return str(response_status)
+
 
 
 def return_user_by_email_and_password(email, password):
@@ -58,9 +66,9 @@ def return_user_by_email(email):
 
 
 def add_recover_password(value):
-    code_generate = random.randint(0000, 9999)
+    code_generate = ''.join(random.choice(string.digits) for i in range(4))
     response = model.user_model.ForgotPassword(
-        user_email=value["email"],
+        user_email=value["email"].lower(),
         code=code_generate,
         created=str(datetime.now())
     ).save()
