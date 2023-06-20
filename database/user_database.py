@@ -1,5 +1,6 @@
 from mongoengine import connect
 import core.models as model
+import string
 import json
 import random
 from datetime import datetime
@@ -26,7 +27,7 @@ def add_user(value):
 
     response = model.user_model.User(
         name=value.name,
-        email=value.email,
+        email=value.email.lower(),
         user_gender=value.user_gender,
         user_type=value.user_type,
         visibility=value.visibility,
@@ -58,9 +59,9 @@ def return_user_by_email(email):
 
 
 def add_recover_password(value):
-    code_generate = random.randint(0000, 9999)
+    code_generate = ''.join(random.choice(string.digits) for i in range(4))
     response = model.user_model.ForgotPassword(
-        user_email=value["email"],
+        user_email=value["email"].lower(),
         code=code_generate,
         created=str(datetime.now())
     ).save()
