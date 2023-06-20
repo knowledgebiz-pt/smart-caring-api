@@ -40,8 +40,15 @@ def add_user(value):
         gmail_access_token=value.gmail_access_token,
         exponent_push_token=value.exponent_push_token,
         address=address
-    ).save()
-    return str(response.auto_id_0)
+    )#.save()
+    if (internal.validate_password.password_check(value.password)):
+        response.save()
+        response_status = "Success"
+        return str(response.auto_id_0)
+    else:
+        response_status = "Invalid Password. Password must contain a minimun of 8 digits, a uppercase and lowercase letter, a digit and a special character"
+        return str(response_status)
+
 
 
 def return_user_by_email_and_password(email, password):
