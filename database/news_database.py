@@ -30,6 +30,7 @@ def add_news(value):
         text = value.text,
         content = content,
         link = link,
+        likes = value.likes,
         date = value.date,
     ).save()
     return str(response.auto_id_0)

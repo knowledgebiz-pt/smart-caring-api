@@ -1,4 +1,4 @@
-from mongoengine import Document, ObjectIdField, StringField, DictField, DateTimeField, BooleanField, EmbeddedDocument, EmbeddedDocumentField
+from mongoengine import Document, ObjectIdField, StringField, DictField, DateTimeField, BooleanField, EmbeddedDocument, EmbeddedDocumentField, IntField
 
 
 class ModelContent(Document):
@@ -17,8 +17,9 @@ class News(Document):
     """
     _id = ObjectIdField()
     user_id = StringField()
-    title = StringField()
+    text = StringField()
     content = EmbeddedDocumentField(ModelContent)
     link = EmbeddedDocumentField(ModelLink)
+    likes = IntField()
     date = DateTimeField()
 
