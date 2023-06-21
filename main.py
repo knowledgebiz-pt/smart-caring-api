@@ -3,7 +3,6 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import routers
 
-
 app = FastAPI(
     contact=dict(
         email="geral@knowldgzebiz.pt",
@@ -28,6 +27,7 @@ app.include_router(routers.likes_router.router, prefix="/likes", tags=["likes"])
 app.include_router(routers.toolbox_router.router, prefix="/toolbox", tags=["toolbox"])
 app.include_router(routers.schedule_router.router, prefix="/schedule", tags=["schedule"])
 app.include_router(routers.diary_router.router, prefix="/diary", tags=["diary"])
+app.include_router(routers.jwt_router.router, prefix="/jwt", tags=["jwt"])
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=2828)
