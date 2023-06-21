@@ -12,8 +12,7 @@ from fastapi import APIRouter
 
 
 router = APIRouter()
-
-SECRET_KEY = "00k25e928xbb6cc2556c817271b3a9563b93f0092f6f0f4caa6cf63b87e8d4e7"
+SECRET_KEY = "0ok25e928xbb6cc2556c817271b3a9563b93f0092f6f0f4caa6cf63b87e8d4e7"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
@@ -57,9 +56,7 @@ async def get_current_user(token: Annotated[str, Depends(internal.jwt.oauth2_sch
     return user
 
 
-async def login_for_access_token(
-    form_data: Annotated[OAuth2PasswordRequestForm, Depends()]
-):
+async def login_for_access_token(form_data: Annotated[OAuth2PasswordRequestForm, Depends()]):
     email = authenticate_email(form_data.email, form_data.password)
     if not email:
         raise HTTPException(
@@ -72,4 +69,3 @@ async def login_for_access_token(
         data={"sub": email.email}, expires_delta=access_token_expires
     )
     return {"access_token": access_token, "token_type": "bearer"}
-
