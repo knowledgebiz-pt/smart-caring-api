@@ -19,7 +19,7 @@ class News(Document):
     user_id = StringField()
     text = StringField()
     content = EmbeddedDocumentField(ModelContent)
-    link = EmbeddedDocumentField(ModelLink)
+    link = DictField()
     likes = IntField()
     date = DateTimeField()
 

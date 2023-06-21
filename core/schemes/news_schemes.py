@@ -26,7 +26,7 @@ class NewsPost(BaseModel):
     )
     content: Optional[Content] = Field(default=null, alias="content")
     link: Optional[Link] = Field(default=null, alias="content")
-    likes: int
+    likes: dict
     date: datetime
 
 
