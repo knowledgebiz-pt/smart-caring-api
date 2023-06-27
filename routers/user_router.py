@@ -1,6 +1,6 @@
 import datetime
 from internal import send_email
-from fastapi import APIRouter, HTTPException, Response, status
+from fastapi import APIRouter, HTTPException, Response, status, Depends
 import core.schemes
 import database.user_database
 import internal
@@ -33,7 +33,9 @@ async def service(response: Response, email: str, password: str):
         response.status_code = status.HTTP_404_NOT_FOUND
         return {"msg": "error", "data": "This User does not exist"}
     else:
+        t = internal.jwt.sign_jwt(email)
         return {"msg": "success",
+                "token": t,
                 "data": response_database}
 
 
@@ -41,7 +43,8 @@ async def service(response: Response, email: str, password: str):
             summary="Recover password by email",
             description="Recover password by email",
             response_model=core.schemes.user_schemes.UserGetResponse,
-            operation_id="RecoverUserPassword"
+            operation_id="RecoverUserPassword",
+            dependencies=[Depends(internal.auth.JwtBearer())]
             )
 async def service(response: Response, email: str):
     response_database = database.user_database.return_user_by_email(email)

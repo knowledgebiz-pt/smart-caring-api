@@ -47,6 +47,7 @@ class UserGetResponse(BaseModel):
     """
     msg: str
     data: object = {}
+    token: object = {}
 
 
 class ForgotPassword(BaseModel):
