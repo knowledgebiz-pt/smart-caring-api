@@ -16,10 +16,13 @@ def add_toolbox(value):
     connect(host=CONNECTION)
 
     response = model.toolbox_model.Toolbox(
-        toolbox_name = value.toolbox_name,
-        toolbox_description = value.toolbox_description,
-        toolbox_image = value.toolbox_image,
-        toolbox_languages = value.toolbox_languages,
+        toolbox_name = value.tool_name,
+        toolbox_description = value.tool_description,
+        toolbox_image = value.tool_image,
+        toolbox_languages = value.tool_languages,
+        toolbox_rating = value.tool_rating,
+        toolbox_website = value.tool_website,
+        tool_tags = value.tool_tags
     ).save()
     return str(response.auto_id_0)
 

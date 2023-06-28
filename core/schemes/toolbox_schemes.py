@@ -18,6 +18,9 @@ class ToolBoxPost(BaseModel):
     )
     tool_image: Optional[str] = Field(default=null, alias="tool image")
     tool_languages: Optional[str] = Field(default=null, alias="tool languages")
+    tool_rating: Optional[str] = Field(default=null, alias="classificação")
+    tool_website: Optional[str] = Field(default=null, alias="aplication website")
+    tool_tags: Optional[str] = Field(default=null, alias="Tool Tags")
 
 
 class ToolBoxCreateResponse(BaseModel):

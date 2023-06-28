@@ -5,8 +5,11 @@ class Toolbox(Document):
     News model database
     """
     _id = ObjectIdField()
-    toolname = StringField()
-    tooldescription = StringField()
-    toolimage = StringField()
-    toollanguages = StringField()
+    tool_name = StringField()
+    tool_description = StringField()
+    tool_image = StringField()
+    tool_languages = StringField()
+    tool_rating = StringField()
+    tool_website = StringField()
+    tool_tags = StringField()
     
