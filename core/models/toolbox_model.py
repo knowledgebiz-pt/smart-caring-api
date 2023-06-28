@@ -12,4 +12,6 @@ class Toolbox(Document):
     tool_rating = StringField()
     tool_website = StringField()
     tool_tags = StringField()
+    tool_category = StringField()
+    tool_price = StringField()
     

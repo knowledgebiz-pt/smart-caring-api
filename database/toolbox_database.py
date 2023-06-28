@@ -22,7 +22,9 @@ def add_toolbox(value):
         toolbox_languages = value.tool_languages,
         toolbox_rating = value.tool_rating,
         toolbox_website = value.tool_website,
-        tool_tags = value.tool_tags
+        tool_tags = value.tool_tags,
+        tool_category = value.tool_category,
+        tool_price = value.tool_price
     ).save()
     return str(response.auto_id_0)
 

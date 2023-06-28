@@ -21,6 +21,8 @@ class ToolBoxPost(BaseModel):
     tool_rating: Optional[str] = Field(default=null, alias="classificação")
     tool_website: Optional[str] = Field(default=null, alias="aplication website")
     tool_tags: Optional[str] = Field(default=null, alias="Tool Tags")
+    tool_category: Optional[str] = Field(default=null, alias="Tool category")
+    tool_price: Optional[str] = Field(default=null, alias="Tool Price")
 
 
 class ToolBoxCreateResponse(BaseModel):
