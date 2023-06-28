@@ -5,9 +5,15 @@ from pyasn1.compat.octets import null
 from fastapi import Depends
 
 
+class ToolBoxResponseData(BaseModel):
+    items: list
+    total_products: int
+
+
+
 class ToolBoxGetResponse(BaseModel):
     """
     Toolbox get response scheme
     """
     msg: str
-    data: object = {}
+    data:ToolBoxResponseData
