@@ -25,8 +25,8 @@ class NewsPost(BaseModel):
         ..., title="The description of the item", min_length = 5, max_length=120
     )
     content: Optional[Content] = Field(default=null, alias="content")
-    link: Optional[Link] = Field(default=null, alias="content")
-    likes: dict
+    #link: Optional[Link] = Field(default=null, alias="content")
+    #likes: dict
     date: datetime
 
 

@@ -17,6 +17,7 @@ async def create_news(article: core.schemes.news_schemes.NewsPost):
     return {"msg": "success",
             "data": {response}}
 
+
 @router.get("/by-id/{id_news}",
              summary="Return news article by id_news",
              description="Return news article by id_news",
@@ -50,6 +51,23 @@ async def get_by_id_user(response: Response, id_user: str):
     else:
         return {"msg": "success",
             "data": response_database}
+
+
+@router.get("/",
+            summary="Return all news articles",
+            description="Return all news articles",
+            response_description="Return all news articles",
+            response_model=core.schemes.news_schemes.NewsGetResponse,
+            operation_id="GetNewsAllArticles"
+            )
+async def get_by_id_user(response: Response):
+    response_database = database.news_database.return_all_news()
+    if response_database is None or not response_database:
+        response.status_code = status.HTTP_404_NOT_FOUND
+        return {"msg": "error", "data": "No articles found for this user"}
+    else:
+        return {"msg": "success", "data": response_database}
+
 
 @router.delete("/by-id/{id_news}",
                summary="Delete news article by id_news",

@@ -1,12 +1,12 @@
 from mongoengine import Document, ObjectIdField, StringField, DictField, DateTimeField, BooleanField, EmbeddedDocument, EmbeddedDocumentField, IntField
 
 
-class ModelContent(Document):
+class ModelContent(EmbeddedDocument):
     type = StringField()
     path = StringField()
 
 
-class ModelLink(Document):
+class ModelLink(EmbeddedDocument):
     path = StringField()
     show_preview = BooleanField()
 

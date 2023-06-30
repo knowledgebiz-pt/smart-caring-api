@@ -8,4 +8,4 @@ class Schedule(Document):
     id_user = StringField()
     event_title = StringField()
     event_description = StringField()
-    date = DateField
+    date = DateField()

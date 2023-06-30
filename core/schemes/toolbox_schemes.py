@@ -10,10 +10,9 @@ class ToolBoxResponseData(BaseModel):
     total_products: int
 
 
-
 class ToolBoxGetResponse(BaseModel):
     """
     Toolbox get response scheme
     """
     msg: str
-    data:ToolBoxResponseData
+    data: ToolBoxResponseData

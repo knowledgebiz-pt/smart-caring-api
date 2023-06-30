@@ -1,23 +1,22 @@
-from fastapi import APIRouter, HTTPException, Response, status
+from fastapi import APIRouter, HTTPException, Response, status, Depends
 import core.schemes
-import database.toolbox_database
+import internal.requests_shapes
 
 router = APIRouter()
 
-@router.get("/by-id/{id_toolbox}",
-             summary="Return Tool Box by id_toolbox",
-             description="Return Tool Box by id_toolbox",
-             response_description="Return Tool Box by its ID",
-             response_model=core.schemes.toolbox_schemes.ToolBoxGetResponse,
-             operation_id="GetToolBoxByIdToolbox"
+
+@router.get("/",
+            summary="Return all products from SHAPES",
+            description="Return all products from SHAPES",
+            response_description="Return all products from SHAPES",
+            response_model=core.schemes.toolbox_schemes.ToolBoxGetResponse,
+            operation_id="GetToolBoxAllProducts",
+            dependencies=[Depends(internal.auth.JwtBearer())]
             )
-async def get_by_id(response: Response, id_toolbox: str):
-    response_database = database.toolbox_database.return_toolbox_by_id(id_toolbox)
-    if response_database is None or not response_database:
-        response.status_code = status.HTTP_404_NOT_FOUND
-        return {"msg": "error", "data": "Article not found."}
-    else:
-        return {
-            "msg": "success",
-            "data": response_database
-            }
+async def get_by_id(response: Response):
+    response = internal.requests_shapes.get_all_products()
+
+    return {"msg": "success", "data": {
+        "items": response["data"]["items"],
+        "total_products": len(response["data"]["items"])
+    }}
