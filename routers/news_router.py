@@ -58,8 +58,7 @@ async def get_by_id_user(response: Response, id_user: str):
             description="Return all news articles",
             response_description="Return all news articles",
             response_model=core.schemes.news_schemes.NewsGetResponse,
-            operation_id="GetNewsAllArticles",
-            dependencies=[Depends(internal.auth.JwtBearer())]
+            operation_id="GetNewsAllArticles"
             )
 async def get_by_id_user(response: Response):
     response_news = database.news_database.return_all_news()
@@ -77,7 +76,8 @@ async def get_by_id_user(response: Response):
              description="Add like to news article",
              response_description="Add like to news article",
              response_model=core.schemes.news_schemes.NewsCreateResponse,
-             operation_id="AddLikeToNewsArticle")
+             operation_id="AddLikeToNewsArticle"
+             )
 async def add_like(response: Response, id_news: str, id_user: str):
     response_database = database.news_database.add_like_in_news(id_news, id_user)
     if response_database is None or not response_database:
@@ -92,7 +92,8 @@ async def add_like(response: Response, id_news: str, id_user: str):
                description="Delete like to news article",
                response_description="Delete like to news article",
                response_model=core.schemes.news_schemes.NewsCreateResponse,
-               operation_id="DeleteLikeToNewsArticle")
+               operation_id="DeleteLikeToNewsArticle"
+               )
 async def delete_like(response: Response, id_news: str, id_user: str):
     response_database = database.news_database.delete_like_in_news(id_news, id_user)
     if response_database is None or not response_database:
@@ -107,7 +108,8 @@ async def delete_like(response: Response, id_news: str, id_user: str):
              description="Add favorites to news article",
              response_description="Add favorites to news article",
              response_model=core.schemes.news_schemes.NewsCreateResponse,
-             operation_id="AddFavoritesToNewsArticle")
+             operation_id="AddFavoritesToNewsArticle"
+             )
 async def add_favorites(response: Response, id_news: str, id_user: str):
     response_database = database.news_database.add_favorite_in_news(id_news, id_user)
     if response_database is None or not response_database:
@@ -122,7 +124,8 @@ async def add_favorites(response: Response, id_news: str, id_user: str):
                description="Delete favorites to news article",
                response_description="Delete favorites to news article",
                response_model=core.schemes.news_schemes.NewsCreateResponse,
-               operation_id="DeleteFavoritesToNewsArticle")
+               operation_id="DeleteFavoritesToNewsArticle"
+               )
 async def delete_favorites(response: Response, id_news: str, id_user: str):
     response_database = database.news_database.delete_favorite_in_news(id_news, id_user)
     if response_database is None or not response_database:
@@ -140,5 +143,5 @@ async def delete_favorites(response: Response, id_news: str, id_user: str):
                operation_id="DeleteNewsArticleByIdNews"
                )
 async def delete_by_id(response: Response, id_news: str):
-    response_database = database.news_database.delete_news_by_id(id_news)
+    database.news_database.delete_news_by_id(id_news)
     return {"msg": "success", "data": "Deleted article."}

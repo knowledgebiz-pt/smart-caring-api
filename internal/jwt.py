@@ -1,10 +1,12 @@
+import os
 import jwt
 import datetime
 from jose import JWTError
 
-SECRET_KEY = "0ok25e928xbb6cc2556c817271b3a9563b93f0092f6f0f4caa6cf63b87e8d4e7"
-ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
+SECRET_KEY = os.getenv("SECRET_KEY_JWT")
+ALGORITHM = os.getenv("ALGORITHM")
+ACCESS_TOKEN_EXPIRE_MINUTES = os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES")
+ACCESS_TOKEN_EXPIRE_MINUTES = int(ACCESS_TOKEN_EXPIRE_MINUTES)
 
 
 # Function return the generated token (JWT)
