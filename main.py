@@ -8,10 +8,10 @@ app = FastAPI(
         email="geral@knowldgzebiz.pt",
         http="https://knowledgebiz.pt"
     ),
-    version="1.0.6",
+    version="1.0.7",
     title="API SMART CARING",
     description="This API integrates with SMART CARING system",
-    #root_path="https://smart-caring.azurewebsites.net/"
+    root_path="https://smart-caring.azurewebsites.net/"
 )
 
 app.add_middleware(

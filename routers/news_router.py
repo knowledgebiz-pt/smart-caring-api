@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException, Response, status
+from fastapi import APIRouter, HTTPException, Response, status, Depends
 import core.schemes
 import database.news_database
 import internal.merge_news_user
@@ -58,7 +58,8 @@ async def get_by_id_user(response: Response, id_user: str):
             description="Return all news articles",
             response_description="Return all news articles",
             response_model=core.schemes.news_schemes.NewsGetResponse,
-            operation_id="GetNewsAllArticles"
+            operation_id="GetNewsAllArticles",
+            dependencies=[Depends(internal.auth.JwtBearer())]
             )
 async def get_by_id_user(response: Response):
     response_news = database.news_database.return_all_news()
