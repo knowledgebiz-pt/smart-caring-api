@@ -10,24 +10,17 @@ class Content(BaseModel):
     path: str
 
 
-class Link(BaseModel):
-    path: str
-    show_preview: bool
-
-
 class NewsPost(BaseModel):
     """
     News Post
     """
     _id: str
     user_id: str
-    text: str = Field(
-        ..., title="The description of the item", min_length = 5, max_length=120
-    )
-    content: Optional[Content] = Field(default=null, alias="content")
-    #link: Optional[Link] = Field(default=null, alias="content")
-    #likes: dict
-    date: datetime
+    text: str = Field(..., title="The description of the item")
+    content: Optional[Content] = Field(alias="content")
+    link: Optional[str] = Field(default="", alias="link")
+    favorites: Optional[list] = Field(default=[], alias="list favorites news")
+    likes: Optional[list] = Field(default=[], alias="list likes news")
 
 
 class NewsCreateResponse(BaseModel):

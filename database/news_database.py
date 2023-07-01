@@ -1,3 +1,5 @@
+import datetime
+
 from mongoengine import connect
 import pymongo
 import core.models as model
@@ -17,34 +19,32 @@ def add_news(value):
     """
     connect(host=CONNECTION)
 
-    content= core.models.news_model.ModelContent()
+    content = core.models.news_model.ModelContent()
     content.type = value.content.type
     content.path = value.content.path
 
-    #link= core.models.news_model.ModelLink()
-    #link.path = value.content.path
-    #link.show_preview = value.content.show_preview
-
     response = model.news_model.News(
-        user_id = value.user_id,
-        text = value.text,
-        content = content,
-        #link = link,
-        #likes = value.likes,
-        date = value.date,
+        user_id=value.user_id,
+        text=value.text,
+        content=content,
+        link=value.link,
+        likes=value.likes,
+        favorites=value.favorites,
+        date=str(datetime.datetime.now()),
     ).save()
     return str(response.auto_id_0)
 
 
 def return_news_by_id(id_news):
     connect(host=CONNECTION)
-    response = model.news_model.News.objects(_id = id_news)
+    response = model.news_model.News.objects(_id=id_news).first()
     response = json.loads(response.to_json()) if response is not None else None
     return response
 
+
 def return_news_by_user_id(id_user):
     connect(host=CONNECTION)
-    response = model.news_model.News.objects(user_id = id_user)
+    response = model.news_model.News.objects(user_id=id_user)
     response = json.loads(response.to_json()) if response is not None else None
     return response
 
@@ -55,8 +55,33 @@ def return_all_news():
     response = json.loads(response.to_json()) if response is not None else None
     return response
 
+
 def delete_news_by_id(id_news):
     connect(host=CONNECTION)
-    response = model.news_model.News.objects(_id = id_news)
+    response = model.news_model.News.objects(_id=id_news)
     response.delete()
+    return response
+
+
+def add_like_in_news(id_news, id_user):
+    connect(host=CONNECTION)
+    response = model.news_model.News.objects(_id=id_news).update_one(push__likes=id_user)
+    return response
+
+
+def delete_like_in_news(id_news, id_user):
+    connect(host=CONNECTION)
+    response = model.news_model.News.objects(_id=id_news).update_one(pull__likes=id_user)
+    return response
+
+
+def add_favorite_in_news(id_news, id_user):
+    connect(host=CONNECTION)
+    response = model.news_model.News.objects(_id=id_news).update_one(push__favorites=id_user)
+    return response
+
+
+def delete_favorite_in_news(id_news, id_user):
+    connect(host=CONNECTION)
+    response = model.news_model.News.objects(_id=id_news).update_one(pull__favorites=id_user)
     return response

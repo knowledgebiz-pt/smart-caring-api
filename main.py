@@ -8,7 +8,7 @@ app = FastAPI(
         email="geral@knowldgzebiz.pt",
         http="https://knowledgebiz.pt"
     ),
-    version="1.0.5",
+    version="1.0.6",
     title="API SMART CARING",
     description="This API integrates with SMART CARING system",
     #root_path="https://smart-caring.azurewebsites.net/"
@@ -31,4 +31,4 @@ app.include_router(routers.diary_router.router, prefix="/diary", tags=["diary"])
 app.include_router(routers.jwt_router.router, prefix="/jwt", tags=["jwt"])
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=2828)
+    uvicorn.run(app, host="0.0.0.0", port=8000)

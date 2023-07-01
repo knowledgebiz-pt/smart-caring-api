@@ -65,6 +65,13 @@ def return_user_by_email(email):
     return response
 
 
+def return_all_users():
+    connect(host=CONNECTION)
+    response = model.user_model.User.objects()
+    response = json.loads(response.to_json()) if response is not None else None
+    return response
+
+
 def add_recover_password(value):
     code_generate = ''.join(random.choice(string.digits) for i in range(4))
     response = model.user_model.ForgotPassword(

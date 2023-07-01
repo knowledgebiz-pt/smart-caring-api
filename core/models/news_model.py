@@ -1,14 +1,9 @@
-from mongoengine import Document, ObjectIdField, StringField, DictField, DateTimeField, BooleanField, EmbeddedDocument, EmbeddedDocumentField, IntField
+from mongoengine import Document, ObjectIdField, StringField, DictField, DateTimeField, BooleanField, EmbeddedDocument, EmbeddedDocumentField, ListField
 
 
 class ModelContent(EmbeddedDocument):
     type = StringField()
     path = StringField()
-
-
-class ModelLink(EmbeddedDocument):
-    path = StringField()
-    show_preview = BooleanField()
 
 
 class News(Document):
@@ -19,7 +14,8 @@ class News(Document):
     user_id = StringField()
     text = StringField()
     content = EmbeddedDocumentField(ModelContent)
-    link = DictField()
-    likes = IntField()
-    date = DateTimeField()
+    link = StringField()
+    likes = ListField()
+    favorites = ListField()
+    date = StringField()
 

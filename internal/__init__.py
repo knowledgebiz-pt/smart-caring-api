@@ -4,3 +4,4 @@ from internal import send_email
 from internal import jwt
 from internal import auth
 from internal import requests_shapes
+from internal import merge_news_user
