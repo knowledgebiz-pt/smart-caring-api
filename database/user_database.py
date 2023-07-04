@@ -9,6 +9,8 @@ import internal
 
 CONNECTION = 'mongodb+srv://basic_user:n1RmcatLryuYJwYY@knowledgebiz-cluster.m8nzdrm.mongodb.net/smart-caring?retryWrites=true&w=majority'
 
+connect(host='mongodb+srv://basic_user:n1RmcatLryuYJwYY@knowledgebiz-cluster.m8nzdrm.mongodb.net/smart-caring?retryWrites=true&w=majority')
+
 
 def add_user(value):
     """
@@ -16,7 +18,7 @@ def add_user(value):
     :param value:
     :return:
     """
-    connect(host=CONNECTION)
+
 
     address = core.models.user_model.ModelUserAddress()
     address.city = value.address.city
@@ -52,21 +54,21 @@ def add_user(value):
 
 
 def return_user_by_email_and_password(email, password):
-    connect(host=CONNECTION)
+
     response = model.user_model.User.objects(email=email, password=password).first()
     response = json.loads(response.to_json()) if response is not None else None
     return response
 
 
 def return_user_by_email(email):
-    connect(host=CONNECTION)
+
     response = model.user_model.User.objects(email=email).first()
     response = json.loads(response.to_json()) if response is not None else None
     return response
 
 
 def return_all_users():
-    connect(host=CONNECTION)
+
     response = model.user_model.User.objects()
     response = json.loads(response.to_json()) if response is not None else None
     return response
@@ -84,14 +86,14 @@ def add_recover_password(value):
 
 
 def return_verify_email_and_code(user_email, code):
-    connect(host=CONNECTION)
+
     response = model.user_model.ForgotPassword.objects(user_email=user_email, code=code).first()
     response = json.loads(response.to_json()) if response is not None else None
     return response
 
 
 def update_user_password(email, password):
-    connect(host=CONNECTION)
+
     response = model.user_model.User.objects(email=email)
     response_update = response.update(password=password)
     if response_update == 1:
