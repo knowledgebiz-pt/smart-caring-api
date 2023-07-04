@@ -1,3 +1,5 @@
+import os
+
 import uvicorn
 from fastapi import FastAPI, Depends
 import internal
@@ -22,6 +24,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+print(os.getenv())
  
 app.include_router(routers.user_router.router, prefix="/user", tags=["user"])
 app.include_router(routers.news_router.router, prefix="/news", tags=["news"], dependencies=[Depends(internal.auth.JwtBearer())])
