@@ -6,4 +6,6 @@ from routers import schedule_router
 from routers import diary_router
 from routers import comment_router
 from routers import jwt_router
+from routers import chat_router
+from routers import group_router
 from routers import websocket_chat_router
