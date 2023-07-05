@@ -4,3 +4,4 @@ from database import likes_database
 from database import schedule_database
 from database import diary_database
 from database import chat_database
+from database import group_database

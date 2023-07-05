@@ -32,6 +32,8 @@ app.include_router(routers.toolbox_router.router, prefix="/toolbox", tags=["tool
 app.include_router(routers.schedule_router.router, prefix="/schedule", tags=["schedule"])
 app.include_router(routers.diary_router.router, prefix="/diary", tags=["diary"])
 app.include_router(routers.jwt_router.router, prefix="/jwt", tags=["jwt"])
+app.include_router(routers.chat_router.router, prefix="/chat", tags=["chat"])
+app.include_router(routers.group_router.router, prefix="/groups", tags=["groups"])
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
