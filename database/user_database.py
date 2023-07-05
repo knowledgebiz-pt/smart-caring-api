@@ -1,5 +1,4 @@
 import os
-
 from mongoengine import connect
 import core.models as model
 import string
@@ -76,7 +75,7 @@ def return_all_users():
 
 
 def add_recover_password(value):
-    code_generate = ''.join(random.choice(string.digits) for i in os.getenv("RECOVERY_CODE_DIGITS"))
+    code_generate = ''.join(random.choice(string.digits) for i in range(int(os.getenv('RECOVERY_CODE_DIGITS'))))
     response = model.user_model.ForgotPassword(
         user_email=value["email"].lower(),
         code=code_generate,
