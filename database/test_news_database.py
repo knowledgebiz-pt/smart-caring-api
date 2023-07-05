@@ -2,12 +2,11 @@ import bson.objectid
 from mongoengine import connect
 import core.models as model
 import json
+import os
 
-import core.models.news_model
 
-#CONNECTION = 'mongodb+srv://basic_user:n1RmcatLryuYJwYY@knowledgebiz-cluster.m8nzdrm.mongodb.net/smart-caring?retryWrites=true&w=majority'
-CONNECTION = 'mongodb://localhost:27017/smartcaring?retryWrites=true&w=majority'
-connect(host='mongodb+srv://basic_user:n1RmcatLryuYJwYY@knowledgebiz-cluster.m8nzdrm.mongodb.net/smart-caring?retryWrites=true&w=majority')
+connect(host=os.getenv('DATABASE_CONNECTION'))
+
 
 def test_add_news():
     value = {

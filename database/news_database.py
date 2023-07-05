@@ -1,16 +1,16 @@
 import datetime
 import uuid
-
 from mongoengine import connect
-import pymongo
 import core.models as model
 import json
 import core.models.news_model
 import internal.connection_azure_storage
+import os
+from mongoengine import connect
+import os
 
-CONNECTION = 'mongodb+srv://basic_user:n1RmcatLryuYJwYY@knowledgebiz-cluster.m8nzdrm.mongodb.net/smart-caring?retryWrites=true&w=majority'
-#CONNECTION = 'mongodb://localhost:27017/smartcaring?retryWrites=true&w=majority'
-connect(host='mongodb+srv://basic_user:n1RmcatLryuYJwYY@knowledgebiz-cluster.m8nzdrm.mongodb.net/smart-caring?retryWrites=true&w=majority')
+
+connect(host=os.getenv('DATABASE_CONNECTION'))
 
 
 def add_news(value):

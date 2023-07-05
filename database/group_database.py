@@ -1,14 +1,13 @@
 from mongoengine import connect
 import core.models as model
 import json
-
+import os
 import core.models.group_model
 
-#CONNECTION = 'mongodb+srv://basic_user:n1RmcatLryuYJwYY@knowledgebiz-cluster.m8nzdrm.mongodb.net/smart-caring?retryWrites=true&w=majority'
-CONNECTION = 'mongodb://localhost:27017/smartcaring?retryWrites=true&w=majority'
-connect(host='mongodb+srv://basic_user:n1RmcatLryuYJwYY@knowledgebiz-cluster.m8nzdrm.mongodb.net/smart-caring?retryWrites=true&w=majority')
+CONNECTION = os.getenv('DATABASE_CONNECTION')
 
-def add_like(value):
+
+def add_group(value):
     """
     Create new group entry in database
     :param value:
