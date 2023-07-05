@@ -4,11 +4,12 @@ from azure.storage.blob import BlobServiceClient, ContentSettings
 import imghdr
 
 
-def upload_image(image, id_image):
+def upload_image(image, id_image, type_image):
     """
     upload image in azure storage
+    :param id_image:
+    :param type_image:
     :param image:
-    :param name:
     :return:
     """
     try:
@@ -24,6 +25,10 @@ def upload_image(image, id_image):
         coded = base64.decodebytes(base_64_data.encode())
 
         ext = imghdr.what(None, coded)
+
+        if ext is None:
+            if type_image == "video":
+                ext = "mp4"
 
         file_name = id_image + "." + ext
 

@@ -24,7 +24,8 @@ def add_news(value):
     content.type = value.content.type
     content.path = value.content.path
 
-    content_file = internal.connection_azure_storage.upload_image(value.content.path, str(uuid.uuid4()))
+    content_file = internal.connection_azure_storage.upload_image(value.content.path, str(uuid.uuid4()),
+                                                                  value.content.type)
 
     content.path = content_file
 

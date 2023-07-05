@@ -1,3 +1,5 @@
+import os
+
 from mongoengine import connect
 import core.models as model
 import string
@@ -18,7 +20,6 @@ def add_user(value):
     :param value:
     :return:
     """
-
 
     address = core.models.user_model.ModelUserAddress()
     address.city = value.address.city
@@ -75,7 +76,7 @@ def return_all_users():
 
 
 def add_recover_password(value):
-    code_generate = ''.join(random.choice(string.digits) for i in range(4))
+    code_generate = ''.join(random.choice(string.digits) for i in os.getenv("RECOVERY_CODE_DIGITS"))
     response = model.user_model.ForgotPassword(
         user_email=value["email"].lower(),
         code=code_generate,

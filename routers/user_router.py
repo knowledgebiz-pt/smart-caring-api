@@ -43,8 +43,7 @@ async def service(response: Response, email: str, password: str):
             summary="Recover password by email",
             description="Recover password by email",
             response_model=core.schemes.user_schemes.UserGetResponse,
-            operation_id="RecoverUserPassword",
-            dependencies=[Depends(internal.auth.JwtBearer())],
+            operation_id="RecoverUserPassword"
             )
 async def service(response: Response, email: str):
     response_database = database.user_database.return_user_by_email(email)
