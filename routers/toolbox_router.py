@@ -13,10 +13,10 @@ router = APIRouter()
             operation_id="GetToolBoxAllProducts",
             dependencies=[Depends(internal.auth.JwtBearer())]
             )
-async def get_by_id(response: Response):
-    response = internal.requests_shapes.get_all_products()
+async def get_by_id():
+    response_request_shapes = internal.requests_shapes.get_all_products()
 
     return {"msg": "success", "data": {
-        "items": response["data"]["items"],
-        "total_products": len(response["data"]["items"])
+        "items": response_request_shapes["data"]["items"],
+        "total_products": len(response_request_shapes["data"]["items"])
     }}

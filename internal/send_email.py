@@ -1,12 +1,14 @@
 import smtplib
 import ssl
+import os
+
+password = os.getenv("EMAIL_AUTH")
 
 
 def send_recovery_code(response_database, code):
     port = 587
     smtp_server = "smtp-mail.outlook.com"
     sender_email = "dev@knowledgebiz.pt"
-    password = "Vuw20954"
 
     receiver_email = response_database["email"]
     recovery_code = code

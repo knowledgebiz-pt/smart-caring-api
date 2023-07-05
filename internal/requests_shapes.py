@@ -1,5 +1,8 @@
 import requests
 import json
+import os
+
+PASSWORD = os.getenv("SHAPES_AUTH")
 
 
 def login_shapes():
@@ -7,7 +10,7 @@ def login_shapes():
 
     payload = json.dumps({
         "email": "oscar.silva@knowledgebiz.pt",
-        "password": "Development@2023"
+        "password": PASSWORD
     })
 
     headers = {
