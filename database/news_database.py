@@ -1,11 +1,12 @@
 import datetime
+import uuid
 
 from mongoengine import connect
 import pymongo
 import core.models as model
 import json
 import core.models.news_model
-
+import internal.connection_azure_storage
 
 CONNECTION = 'mongodb+srv://basic_user:n1RmcatLryuYJwYY@knowledgebiz-cluster.m8nzdrm.mongodb.net/smart-caring?retryWrites=true&w=majority'
 #CONNECTION = 'mongodb://localhost:27017/smartcaring?retryWrites=true&w=majority'
@@ -19,10 +20,16 @@ def add_news(value):
     :return:
     """
 
-
     content = core.models.news_model.ModelContent()
     content.type = value.content.type
     content.path = value.content.path
+
+    content_file = internal.connection_azure_storage.upload_image(value.content.path, str(uuid.uuid4()))
+
+    content.path = content_file
+
+    if content_file is None:
+        return None
 
     response = model.news_model.News(
         user_id=value.user_id,

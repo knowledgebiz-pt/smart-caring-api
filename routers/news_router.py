@@ -15,7 +15,10 @@ router = APIRouter()
              )
 async def create_news(article: core.schemes.news_schemes.NewsPost):
     response = database.news_database.add_news(article)
-    return {"msg": "success", "data": response}
+    if response is None or not response:
+        return {"msg": "error", "data": "Article not created."}
+    else:
+        return {"msg": "success", "data": response}
 
 
 @router.get("/by-id/{id_news}",
