@@ -79,3 +79,14 @@ async def get_by_id_user(response: Response, id_user: str):
 async def delete_by_id(response: Response, id_comment: str):
     response_database = database.comment_database.delete_comment_by_id(id_comment)
     return {"msg": "success", "data": []}
+
+@router.delete("/by-news-id/{id_news}",
+               summary="Delete comments by id_news",
+               description="Delete comments by id_news",
+               response_description="Delete comments by news' post ID",
+               response_model=core.schemes.comment_schemes.CommentDeleteResponse,
+               operation_id="DeleteCommentByIdNews"
+               )
+async def delete_by_id(response: Response, id_news: str):
+    response_database = database.comment_database.delete_comments_by_id_news(id_news)
+    return {"msg": "success", "data": []}
