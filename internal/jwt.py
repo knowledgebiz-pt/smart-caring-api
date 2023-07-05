@@ -6,7 +6,6 @@ from jose import JWTError
 SECRET_KEY = os.getenv("SECRET_KEY_JWT")
 ALGORITHM = os.getenv("ALGORITHM")
 ACCESS_TOKEN_EXPIRE_MINUTES = os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES")
-ACCESS_TOKEN_EXPIRE_MINUTES = int(ACCESS_TOKEN_EXPIRE_MINUTES)
 
 
 # Function return the generated token (JWT)
