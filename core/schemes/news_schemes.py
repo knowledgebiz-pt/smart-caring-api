@@ -6,8 +6,8 @@ from fastapi import Depends
 
 
 class Content(BaseModel):
-    type: str
-    path: str
+    type: str = Field(title="The type of file", description="The type of file", default="")
+    path: str = Field(title="The path of file", description="The path of file", default="")
 
 
 class NewsPost(BaseModel):
@@ -17,7 +17,7 @@ class NewsPost(BaseModel):
     _id: str
     user_id: str
     text: str = Field(..., title="The description of the item")
-    content: Optional[Content] = Field(alias="content")
+    content: Content = Field(alias="content")
     link: Optional[str] = Field(default="", alias="link")
     favorites: Optional[list] = Field(default=[], alias="list favorites news")
     likes: Optional[list] = Field(default=[], alias="list likes news")

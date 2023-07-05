@@ -24,13 +24,15 @@ def add_news(value):
     content.type = value.content.type
     content.path = value.content.path
 
-    content_file = internal.connection_azure_storage.upload_image(value.content.path, str(uuid.uuid4()),
-                                                                  value.content.type)
+    content_file = None
 
-    content.path = content_file
+    if len(content.path) > 100:
+        content_file = internal.connection_azure_storage.upload_image(value.content.path, str(uuid.uuid4()),
+                                                                      value.content.type)
+        content.path = content_file
 
-    if content_file is None:
-        return None
+        if content_file is None:
+            return None
 
     response = model.news_model.News(
         user_id=value.user_id,
