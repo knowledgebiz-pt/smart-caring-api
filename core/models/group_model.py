@@ -15,6 +15,6 @@ class Group(Document):
     Group model database
     """   
     _id = ObjectIdField()
-    user_id_sender = StringField()
+    user_id_creator = StringField()
     users_ids_receivers = ListField()
     message = EmbeddedDocumentField(ModelMessage)

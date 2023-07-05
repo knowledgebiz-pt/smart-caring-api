@@ -25,7 +25,7 @@ def add_like(value):
     message.sent = value.sent
 
     response = model.group_model.Group(
-        user_id_sender = value.id_sender,
+        user_id_creator = value.id_creator,
         users_ids_receivers = value.id_receiver,
         message = message
     ).save()

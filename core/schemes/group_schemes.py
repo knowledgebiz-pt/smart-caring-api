@@ -21,7 +21,7 @@ class GroupPost(BaseModel):
     Group scheme
     """
     _id: str
-    user_id_sender: str
+    user_id_creator: str
     users_ids_receivers: list
     message: Message
     
