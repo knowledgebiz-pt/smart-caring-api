@@ -30,6 +30,7 @@ app.include_router(routers.news_router.router, prefix="/news", tags=["news"], de
 app.include_router(routers.likes_router.router, prefix="/likes", tags=["likes"], deprecated=True)
 app.include_router(routers.toolbox_router.router, prefix="/toolbox", tags=["toolbox"])
 app.include_router(routers.schedule_router.router, prefix="/schedule", tags=["schedule"])
+app.include_router(routers.comment_router.router, prefix="/comment", tags=["comment"])
 app.include_router(routers.diary_router.router, prefix="/diary", tags=["diary"])
 app.include_router(routers.jwt_router.router, prefix="/jwt", tags=["jwt"])
 
