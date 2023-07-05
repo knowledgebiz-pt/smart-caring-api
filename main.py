@@ -33,6 +33,7 @@ app.include_router(routers.schedule_router.router, prefix="/schedule", tags=["sc
 app.include_router(routers.comment_router.router, prefix="/comment", tags=["comment"])
 app.include_router(routers.diary_router.router, prefix="/diary", tags=["diary"])
 app.include_router(routers.jwt_router.router, prefix="/jwt", tags=["jwt"])
+app.add_websocket_route("/private-chat", routers.websocket_chat_router.websocket_endpoint)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
