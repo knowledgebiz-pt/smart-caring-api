@@ -73,9 +73,11 @@ def return_all_users():
     response = json.loads(response.to_json()) if response is not None else None
     return response
 
+import secrets
+
 
 def add_recover_password(value):
-    code_generate = ''.join(random.choice(string.digits) for i in range(int(os.getenv('RECOVERY_CODE_DIGITS'))))
+    code_generate = str(random.randint(1000, 9999))
     response = model.user_model.ForgotPassword(
         user_email=value["email"].lower(),
         code=code_generate,
