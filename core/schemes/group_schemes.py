@@ -10,9 +10,7 @@ class Message(BaseModel):
     content: str
     date: datetime
     id_user_sender: str
-    ids_users_receivers: list
     deleted: bool
-    viewed: bool
     sent: bool
 
 

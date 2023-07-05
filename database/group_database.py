@@ -19,9 +19,7 @@ def add_like(value):
     message.content = value.content,
     message.date = value.date,
     message.id_user_sender = value.id_user_sender,
-    message.ids_users_receivers = value.id_user_receiver,
     message.deleted = value.deleted,
-    message.viewed = value.viewed,
     message.sent = value.sent
 
     response = model.group_model.Group(

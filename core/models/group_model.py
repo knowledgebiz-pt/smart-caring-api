@@ -5,9 +5,7 @@ class ModelMessage(EmbeddedDocument):
     content = StringField()
     date = DateTimeField()
     id_user_sender = StringField()
-    ids_users_receivers = ListField()
     deleted = BooleanField()
-    viewed = BooleanField()
     sent = BooleanField()
 
 class Group(Document):
