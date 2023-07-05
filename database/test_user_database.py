@@ -2,6 +2,12 @@ import pytest
 from database import user_database
 import core.schemes as model
 from fastapi.encoders import jsonable_encoder
+import os
+from mongoengine import connect
+
+
+connect(host=os.getenv('DATABASE_CONNECTION'))
+
 
 
 def create_user_address_data():

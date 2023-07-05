@@ -1,12 +1,12 @@
 from mongoengine import connect
 import core.models as model
 import json
-
 import core.models.schedule_model
+import os
 
-#CONNECTION = 'mongodb+srv://basic_user:n1RmcatLryuYJwYY@knowledgebiz-cluster.m8nzdrm.mongodb.net/smart-caring?retryWrites=true&w=majority'
-CONNECTION = 'mongodb://localhost:27017/smartcaring?retryWrites=true&w=majority'
-connect(host='mongodb+srv://basic_user:n1RmcatLryuYJwYY@knowledgebiz-cluster.m8nzdrm.mongodb.net/smart-caring?retryWrites=true&w=majority')
+
+connect(host=os.getenv('DATABASE_CONNECTION'))
+
 
 def add_schedule(value):
     """
@@ -14,8 +14,6 @@ def add_schedule(value):
     :param value:
     :return:
     """
-
-
     response = model.schedule_model.Schedule(
         event_title = value.event_title,
         event_description = value.event_description,
