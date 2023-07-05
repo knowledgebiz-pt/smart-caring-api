@@ -73,8 +73,6 @@ def return_all_users():
     response = json.loads(response.to_json()) if response is not None else None
     return response
 
-import secrets
-
 
 def add_recover_password(value):
     code_generate = str(random.randint(1000, 9999))
