@@ -11,7 +11,7 @@ app = FastAPI(
         email="geral@knowldgzebiz.pt",
         http="https://knowledgebiz.pt"
     ),
-    version="1.0.9",
+    version="1.0.10",
     title="API SMART CARING",
     description="This API integrates with SMART CARING system",
     #root_path="https://smart-caring.azurewebsites.net/"
