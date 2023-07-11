@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException, Response, status
 import core.schemes
 import database.comment_database
+import database.user_database
 
 router = APIRouter()
 
@@ -26,6 +27,17 @@ async def create_comment(like: core.schemes.comment_schemes.CommentPost):
             )
 async def get_by_id(response: Response, id_comment: str):
     response_database = database.comment_database.return_comments_by_id(id_comment)
+    users = database.user_database.return_all_users()
+    for item in response_database:
+        for user in users:
+            if item["user_id"] == user["_id"]["$oid"]:
+                user_info = {
+                    "user_name": user["name"],
+                    "user_type": user["user_type"],
+                    "user_picture": user["picture"]
+                }
+                if users is not None:
+                    item["user_info"] = user_info
     if response_database is None or not response_database:
         response.status_code = status.HTTP_404_NOT_FOUND
         return {"msg": "error", "data": "No comment found for comment ID"}
@@ -44,6 +56,17 @@ async def get_by_id(response: Response, id_comment: str):
             )
 async def get_by_id(response: Response, id_news: str):
     response_database = database.comment_database.return_comments_by_id_news(id_news)
+    users = database.user_database.return_all_users()
+    for item in response_database:
+        for user in users:
+            if item["user_id"] == user["_id"]["$oid"]:
+                user_info = {
+                    "user_name": user["name"],
+                    "user_type": user["user_type"],
+                    "user_picture": user["picture"]
+                }
+                if users is not None:
+                    item["user_info"] = user_info
     if response_database is None or not response_database:
         response.status_code = status.HTTP_404_NOT_FOUND
         return {"msg": "error", "data": "No comments found for specified article."}
@@ -62,6 +85,17 @@ async def get_by_id(response: Response, id_news: str):
             )
 async def get_by_id_user(response: Response, id_user: str):
     response_database = database.comment_database.return_comments_by_user_id(id_user)
+    users = database.user_database.return_all_users()
+    for item in response_database:
+        for user in users:
+            if item["user_id"] == user["_id"]["$oid"]:
+                user_info = {
+                    "user_name": user["name"],
+                    "user_type": user["user_type"],
+                    "user_picture": user["picture"]
+                }
+                if users is not None:
+                    item["user_info"] = user_info
     if response_database is None or not response_database:
         response.status_code = status.HTTP_404_NOT_FOUND
         return {"msg": "error", "data": "No comments found from this user"}
