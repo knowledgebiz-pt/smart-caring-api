@@ -92,7 +92,8 @@ async def get_by_id_user(response: Response, id_user: str):
                 user_info = {
                     "user_name": user["name"],
                     "user_type": user["user_type"],
-                    "user_picture": user["picture"]
+                    "user_picture": user["picture"],
+                    "visibility": user["visibility"]
                 }
                 if users is not None:
                     item["user_info"] = user_info
