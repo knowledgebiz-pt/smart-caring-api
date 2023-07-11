@@ -1,4 +1,4 @@
-from mongoengine import Document, ObjectIdField, StringField, DictField, DateTimeField, BooleanField, EmbeddedDocument, EmbeddedDocumentField, ListField
+from mongoengine import Document, ObjectIdField, StringField, IntField, DictField, DateTimeField, BooleanField, EmbeddedDocument, EmbeddedDocumentField, ListField
 
 
 class ModelContent(EmbeddedDocument):
