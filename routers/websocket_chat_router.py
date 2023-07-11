@@ -20,6 +20,9 @@ class ConnectionManager:
         self.active_connections: List[WebSocket] = []
 
     async def connect(self, websocket: WebSocket):
+        print("SOMEONE CONNECTED")
+        for item in websocket.headers.values():
+            print(item)
         await websocket.accept()
         self.active_connections.append(websocket)
 
@@ -36,8 +39,19 @@ class ConnectionManager:
             if connection.client_state.CONNECTED:
                 await connection.send_text(message)
 
+    async def send_message_to_user_id(self, message, id_user):
+        user_receive = None
+        for wb in self.active_connections:
+            for hd in wb.headers.items():
+                if hd[0] == "id-user":
+                    if hd[1] == id_user:
+                        user_receive = wb
+        if user_receive is not None:
+            await user_receive.send_text(message)
+
 
 manager = ConnectionManager()
+
 
 async def websocket_endpoint(websocket: WebSocket):
     await manager.connect(websocket)
@@ -45,7 +59,8 @@ async def websocket_endpoint(websocket: WebSocket):
         while True:
             data = await websocket.receive_text()
             body = json.loads(data)
-            print(body)
+            print(data)
+            await manager.send_message_to_user_id(data, body["id_user_receiver"])
     except WebSocketDisconnect:
         manager.disconnect(websocket)
         await manager.broadcast(f"Client left the chat")
