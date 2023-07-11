@@ -4,5 +4,7 @@ from core.schemes import likes_scheme
 from core.schemes import toolbox_schemes
 from core.schemes import schedule_schemes
 from core.schemes import diary_schemes
-from core.schemes import comment_schemes
 from core.schemes import jwt_schemes
+from core.schemes import chat_schemes
+from core.schemes import group_schemes
+from core.schemes import comment_schemes

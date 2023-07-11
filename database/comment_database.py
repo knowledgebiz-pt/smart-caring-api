@@ -2,12 +2,11 @@ from mongoengine import connect
 import datetime
 import core.models as model
 import json
+import os
 
-import core.models.comment_model
 
-#CONNECTION = 'mongodb+srv://basic_user:n1RmcatLryuYJwYY@knowledgebiz-cluster.m8nzdrm.mongodb.net/smart-caring?retryWrites=true&w=majority'
-CONNECTION = 'mongodb://localhost:27017/smartcaring?retryWrites=true&w=majority'
-connect(host='mongodb+srv://basic_user:n1RmcatLryuYJwYY@knowledgebiz-cluster.m8nzdrm.mongodb.net/smart-caring?retryWrites=true&w=majority')
+connect(host=os.getenv('DATABASE_CONNECTION'))
+
 
 def add_comment(value):
     """

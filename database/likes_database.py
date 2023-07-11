@@ -1,12 +1,11 @@
-from mongoengine import connect
 import core.models as model
 import json
-
 import core.models.likes_model
+import os
+from mongoengine import connect
 
-#CONNECTION = 'mongodb+srv://basic_user:n1RmcatLryuYJwYY@knowledgebiz-cluster.m8nzdrm.mongodb.net/smart-caring?retryWrites=true&w=majority'
-CONNECTION = 'mongodb://localhost:27017/smartcaring?retryWrites=true&w=majority'
-connect(host='mongodb+srv://basic_user:n1RmcatLryuYJwYY@knowledgebiz-cluster.m8nzdrm.mongodb.net/smart-caring?retryWrites=true&w=majority')
+connect(host=os.getenv('DATABASE_CONNECTION'))
+
 
 def add_like(value):
     """
@@ -14,8 +13,6 @@ def add_like(value):
     :param value:
     :return:
     """
-
-
     response = model.likes_model.Likes(
         is_like = value.is_like,
         user_id = value.user_id,

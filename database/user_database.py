@@ -7,10 +7,10 @@ import random
 from datetime import datetime
 import core.models.user_model
 import internal
+import os
 
-CONNECTION = 'mongodb+srv://basic_user:n1RmcatLryuYJwYY@knowledgebiz-cluster.m8nzdrm.mongodb.net/smart-caring?retryWrites=true&w=majority'
 
-connect(host='mongodb+srv://basic_user:n1RmcatLryuYJwYY@knowledgebiz-cluster.m8nzdrm.mongodb.net/smart-caring?retryWrites=true&w=majority')
+connect(host=os.getenv('DATABASE_CONNECTION'))
 
 
 def add_user(value):
