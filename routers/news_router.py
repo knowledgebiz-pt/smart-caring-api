@@ -2,6 +2,7 @@ from fastapi import APIRouter, HTTPException, Response, status, Depends
 import core.schemes
 import database.news_database
 import internal.merge_news_user
+from database import comment_database
 
 router = APIRouter()
 
@@ -67,6 +68,12 @@ async def get_by_id_user(response: Response):
     response_news = database.news_database.return_all_news()
     response_users = database.user_database.return_all_users()
     response_news_merged = internal.merge_news_user.merge_news_user(response_news, response_users)
+    for item in response_news_merged:
+        total_comments = comment_database.return_comments_by_id_news(item["_id"]["$oid"])
+        if total_comments is not None:
+            item["total_comments"] = len(total_comments)
+        else:
+            item["total_comments"] = 0
     if response_news is None or not response_news:
         response.status_code = status.HTTP_404_NOT_FOUND
         return {"msg": "error", "data": "No articles found"}
