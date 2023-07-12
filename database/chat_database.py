@@ -25,11 +25,15 @@ def add_chat(value):
     # message.sent = value.sent
     print("here")
     print(value)
+    print(value["user_id_sender"])
 
     response = model.chat_model.Chat(
         user_id_sender=value["user_id_sender"],
-        user_id_receiver=value["id_receiver"],
-        message=value["message"]
+        user_id_receiver=value["user_id_receiver"],
+        message={
+            "type": "msg",
+            "content": value["message"],
+        }
     ).save()
     return str(response.auto_id_0)
 

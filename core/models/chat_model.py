@@ -1,5 +1,6 @@
 from mongoengine import Document, ObjectIdField, StringField, BooleanField, DateTimeField, EmbeddedDocumentField, EmbeddedDocument
 
+
 class ModelMessage(EmbeddedDocument):
     type = StringField()
     content = StringField()
@@ -9,6 +10,7 @@ class ModelMessage(EmbeddedDocument):
     deleted = BooleanField()
     viewed = BooleanField()
     sent = BooleanField()
+
 
 class Chat(Document):
     """

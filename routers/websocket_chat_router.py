@@ -63,7 +63,7 @@ async def websocket_endpoint(websocket: WebSocket):
             body = json.loads(data)
             print(data)
             database.chat_database.add_chat(body)
-            await manager.send_message_to_user_id(data, body["id_user_receiver"])
+            await manager.send_message_to_user_id(data, body["user_id_receiver"])
     except WebSocketDisconnect:
         manager.disconnect(websocket)
         await manager.broadcast(f"Client left the chat")
