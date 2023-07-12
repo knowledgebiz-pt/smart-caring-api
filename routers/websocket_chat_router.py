@@ -9,6 +9,8 @@ import logging
 from fastapi.logger import logger
 import threading
 import internal
+import database.chat_database
+import json
 
 gunicorn_logger = logging.getLogger('gunicorn.error')
 logger.handlers = gunicorn_logger.handlers
@@ -60,6 +62,7 @@ async def websocket_endpoint(websocket: WebSocket):
             data = await websocket.receive_text()
             body = json.loads(data)
             print(data)
+            database.chat_database.add_chat(body)
             await manager.send_message_to_user_id(data, body["id_user_receiver"])
     except WebSocketDisconnect:
         manager.disconnect(websocket)
